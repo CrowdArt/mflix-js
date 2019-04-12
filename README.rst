@@ -314,3 +314,37 @@ run the command:
 
 Each ticket will contain the exact command to run that ticket's specific unit
 tests. You can run these commands from anywhere in the **mflix-js** project.
+
+mongorestore --drop --gzip --uri "mongodb+srv://m220student:m220password@flix-dfpwq.gcp.mongodb.net/test?retryWrites=true" data
+mongorestore --drop --gzip --uri \ "mongodb+srv://m220student:m220password@flix-dfpwq.gcp.mongodb.net/" data
+mongorestore --drop --gzip --uri \ "mongodb://m220student:m220password@flix-dfpwq.gcp.mongodb.net/" data
+mongorestore --drop --gzip --uri mongodb+srv://m220student:m220password@flix-dfpwq.gcp.mongodb.net/test?retryWrites=true data
+mongorestore --drop --gzip --uri mongodb+srv://m220student:m220password@flix-dfpwq.gcp.mongodb.net/test?retryWrites=true data
+
+mongodb+srv://m220student:m220password@mflix-1kvmm.mongodb.net/test
+mongodb+srv://m220student:m220password@flix-dfpwq.gcp.mongodb.net/test
+
+mongorestore --drop --gzip --uri mongodb+srv://m220student:m220password@mflix-dfpwq.gcp.mongodb.net/test?retryWrites=true data
+
+
+mongodb+srv://m220student:m220password@mflix-dfpwq.gcp.mongodb.net/test?retryWrites=true
+
+mongodb+srv://m220student:m220password@mflix-dfpwq.gcp.mongodb.net/test?retryWrites=true
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://m220student:<password>@mflix-dfpwq.gcp.mongodb.net/test?retryWrites=true";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
+### Asynchronous Javascript
+* If a callback isnt provided, asynchronous methods in the Node driver will return a Promise.  
+* All await statements should be surrounded by a try/catch block.
+* To use the await keyword, the enclosing function must be marked async.
+
+### Basic Reads
+* Field projection is specified as a JSON object
+* We must explicitly remove the _id field in a projection if we do not want to include this field.
